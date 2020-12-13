@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:51:06 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:57:07 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/13 14:54:09 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,8 @@ double	get_cosg_tr(t_var_list var, t_camera cam)
 	double		w;
 	double		spec;
 	t_vector	vr;
-	t_vector	normal;
 
 	spec = 20;
-	normal = var.normal;
 	w = -inner(var.incident, var.normal) / inner(var.normal, var.normal);
 	vr = vector_add(vector_mlt(var.normal, 2 * w), var.incident);
 	cosg = -inner(vr, cam.ray) / sqrt(inner(vr, vr) * inner(cam.ray, cam.ray));

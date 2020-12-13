@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:50:30 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:47:32 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/13 19:41:10 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,7 @@ void			write_img(FILE *f, int w, int h, t_rgb *rgb)
 void			bitmap_generator(t_list *ls, t_rgb *rgb)
 {
 	FILE	*f;
-	int		w;
-	int		h;
 
-	w = ls->scn->width;
-	h = ls->scn->height;
 	f = fopen("img.bmp", "wb");
 	write_bf_bi(f, ls->scn->width, ls->scn->height);
 	write_img(f, ls->scn->width, ls->scn->height, rgb);

@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:50:46 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/12 15:04:29 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/13 14:55:01 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ void		new_pixel_put(t_screen s, int x, int y, t_rgb rgb)
 double		get_trgb_fromid(t_list *ls, int id)
 {
 	double		trgb;
-	int			cnt;
 
 	trgb = 0.0;
-	cnt = 0;
 	if (id < ls->cnt->sp)
 	{
 		trgb = create_trgb(0, ls->sp[id].var.rgb[0],\

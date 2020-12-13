@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 13:55:11 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 11:12:39 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/13 19:03:54 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <limits.h>
-# include "my_mlx.h"
+# include "minilibx_mms_20200219/mlx.h"
 
 typedef struct	s_vector{
 	double		x;
