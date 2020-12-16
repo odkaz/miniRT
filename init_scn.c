@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:51:37 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:58:23 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/14 10:42:47 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ int			key_press(int keycode, t_list *ls)
 	if (keycode == KEY_ESC)
 		exit(0);
 	if (keycode == KEY_TAB)
+	{
+		switch_cam(ls);
+		re_render(ls);
+	}
+	if (keycode == KEY_ESC_VM)
+		exit(0);
+	if (keycode == KEY_TAB_VM)
 	{
 		switch_cam(ls);
 		re_render(ls);

@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 13:55:11 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 19:03:54 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/16 19:13:48 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <limits.h>
+# include "get_next_line/get_next_line.h"
 # include "minilibx_mms_20200219/mlx.h"
 
 typedef struct	s_vector{
@@ -358,7 +359,6 @@ t_screen		*init_scn(t_list *ls);
 /*
 ** get_next_line.c
 */
-int				get_next_line(int fd, char **line);
 /*
 ** main.c
 */
@@ -377,5 +377,7 @@ void			project_window(t_list *ls, t_rgb *pixels);
 # define WIN_CLOSE	17
 # define KEY_TAB	48
 # define KEY_ESC	53
+# define KEY_TAB_VM	65289
+# define KEY_ESC_VM	65307
 
 #endif
