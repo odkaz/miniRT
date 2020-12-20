@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/13 10:57:31 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:57:32 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/19 00:43:59 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int			check_len_cy(t_cylinder cy, t_vector p)
 	double	len;
 
 	len = inner(vector_sub(cy.pos, p), cy.norm);
-	if (len <= cy.height && len >= 0)
+	if (len <= cy.height / 2 && len >= -cy.height / 2)
 	{
 		return (1);
 	}
@@ -31,7 +31,7 @@ int			len_cy(t_list *ls, t_cylinder *cy)
 
 	pc = vector_add(ls->base_cam.pos, vector_mlt(ls->base_cam.ray, cy->var.t));
 	len = inner(vector_sub(cy->pos, pc), cy->norm);
-	if (len <= cy->height && len >= 0)
+	if (len <= cy->height / 2 && len >= -cy->height / 2)
 	{
 		return (1);
 	}
@@ -45,7 +45,7 @@ int			len_test_cy(t_list *ls, t_cylinder *cy, int *min, int i)
 
 	pc = vector_add(ls->base_cam.pos, vector_mlt(ls->base_cam.ray, cy->var.t));
 	len = inner(vector_sub(cy->pos, pc), cy->norm);
-	if (len <= cy->height && len >= 0)
+	if (len <= cy->height / 2 && len >= -cy->height / 2)
 	{
 		if (*min == -1)
 			*min = i;

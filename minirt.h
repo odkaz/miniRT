@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 13:55:11 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/16 19:13:48 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/20 15:16:44 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,11 @@ typedef struct	s_list
 	t_triangle	*tr;
 	t_rgb		*pixels;
 	t_camera	base_cam;
+
+	t_rgb		**rgb;
+	void		**img;
+	char		**add;
+
 	void		*targ;
 	int			type;
 }				t_list;
@@ -277,6 +282,7 @@ t_vector		get_vectors(char **line, double min, double max);
 ** parse_utils2.c
 */
 void			check_normal(t_vector n);
+void			skip_to_num(char **line);
 /*
 ** parse_check.c
 */
@@ -290,7 +296,7 @@ t_list			*parse(char *path);
 /*
 ** bitmap.c
 */
-void			bitmap_generator(t_list *ls, t_rgb *pixels);
+void			bitmap_generator(t_list *ls);
 /*
 ** color.c
 */
@@ -338,6 +344,11 @@ int				shadow_sq(t_list *ls, t_vector ray, t_light light, int id);
 int				shadow_cy(t_list *ls, t_vector ray, t_light light, int id);
 int				shadow_tr(t_list *ls, t_vector ray, t_light light, int id);
 /*
+** shadow_utils.c
+*/
+double			*add_brightness_d(t_list *ls, int min, t_light l, double *var);
+double			*add_brightness_s(t_list *ls, int min, t_light l, double *var);
+/*
 ** utils.c
 */
 void			*ft_memset(void *buf, int ch, size_t n);
@@ -353,9 +364,13 @@ int				cisnum(char c);
 size_t			ft_strlen_new(const char *str);
 void			ft_putstr(char *s);
 /*
+** utils3.c
+*/
+char			*get_fname(char *index);
+/*
 ** init_scn.c
 */
-t_screen		*init_scn(t_list *ls);
+t_screen		*init_scn(t_list *ls, int argc);
 /*
 ** get_next_line.c
 */
@@ -363,7 +378,11 @@ t_screen		*init_scn(t_list *ls);
 ** main.c
 */
 void			exit_error(char *msg);
-void			project_window(t_list *ls, t_rgb *pixels);
+/*
+** project_window.c
+*/
+void			project_window(t_list *ls);
+void			create_images(t_list *ls);
 
 # define CAM 0
 # define LGT 1
@@ -379,5 +398,6 @@ void			project_window(t_list *ls, t_rgb *pixels);
 # define KEY_ESC	53
 # define KEY_TAB_VM	65289
 # define KEY_ESC_VM	65307
+# define EPSILON	1E-9
 
 #endif

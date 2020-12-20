@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:52:37 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:50:33 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/19 16:17:40 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		parse_sp(t_list *ls, char *line)
 	sp = (t_sphere *)ft_calloc(1, sizeof(t_sphere));
 	line += 2;
 	sp->pos = get_vectors(&line, 1, -1);
-	sp->rad = nextnum(&line, 0, -1);
+	sp->rad = nextnum(&line, 0, -1) / 2;
 	sp->var.rgb[0] = nextnum(&line, 0, 255);
 	sp->var.rgb[1] = nextnum(&line, 0, 255);
 	sp->var.rgb[2] = nextnum(&line, 0, 255);
@@ -103,7 +103,7 @@ void		parse_cy(t_list *ls, char *line)
 	cy->var.rgb[0] = nextnum(&line, 0, 255);
 	cy->var.rgb[1] = nextnum(&line, 0, 255);
 	cy->var.rgb[2] = nextnum(&line, 0, 255);
-	cy->r = nextnum(&line, 0, -1);
+	cy->r = nextnum(&line, 0, -1) / 2;
 	cy->height = nextnum(&line, 0, -1);
 	i = 0;
 	while (!check_null(sizeof(t_cylinder), &(ls->cy[i])))

@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:52:45 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:50:55 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/20 15:25:49 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int			atoishift(char **line)
 {
-	int		res;
+	long		res;
 
 	res = 0;
 	while (cisnum(**line))
 	{
 		res = res * 10 + (**line - '0');
+		if (res > INT_MAX)
+			exit_error("the number is too big. please make it smaller\n");
 		(*line)++;
 	}
 	return (res);
@@ -56,8 +58,7 @@ double		nextnum(char **line, double min, double max)
 {
 	double		res;
 
-	while (cisspace(**line) || **line == ',')
-		(*line)++;
+	skip_to_num(line);
 	if (**line == '-')
 	{
 		(*line)++;

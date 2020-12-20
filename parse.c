@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:52:48 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/12 14:10:20 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/20 15:47:32 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ t_list		*malloc_list(t_count *cnt)
 
 	ls = (t_list *)malloc(sizeof(t_list));
 	if (!ls)
-		return (NULL);
+		exit_error("malloc failed\n");
 	ls->cnt = cnt;
-	ls->scn = (t_screen *)calloc(cnt->r + 1, sizeof(t_screen));
-	ls->sp = (t_sphere *)calloc(cnt->sp + 1, sizeof(t_sphere));
-	ls->amb = (t_ambient *)calloc(cnt->a + 1, sizeof(t_ambient));
-	ls->cam = (t_camera *)calloc(cnt->c + 1, sizeof(t_camera));
-	ls->l = (t_light *)calloc(cnt->l + 1, sizeof(t_light));
-	ls->pl = (t_plane *)calloc(cnt->pl + 1, sizeof(t_plane));
-	ls->sq = (t_square *)calloc(cnt->sq + 1, sizeof(t_square));
-	ls->cy = (t_cylinder *)calloc(cnt->cy + 1, sizeof(t_cylinder));
-	ls->tr = (t_triangle *)calloc(cnt->tr + 1, sizeof(t_triangle));
+	ls->scn = (t_screen *)ft_calloc(cnt->r + 1, sizeof(t_screen));
+	ls->sp = (t_sphere *)ft_calloc(cnt->sp + 1, sizeof(t_sphere));
+	ls->amb = (t_ambient *)ft_calloc(cnt->a + 1, sizeof(t_ambient));
+	ls->cam = (t_camera *)ft_calloc(cnt->c + 1, sizeof(t_camera));
+	ls->l = (t_light *)ft_calloc(cnt->l + 1, sizeof(t_light));
+	ls->pl = (t_plane *)ft_calloc(cnt->pl + 1, sizeof(t_plane));
+	ls->sq = (t_square *)ft_calloc(cnt->sq + 1, sizeof(t_square));
+	ls->cy = (t_cylinder *)ft_calloc(cnt->cy + 1, sizeof(t_cylinder));
+	ls->tr = (t_triangle *)ft_calloc(cnt->tr + 1, sizeof(t_triangle));
 	return (ls);
 }
 
@@ -84,8 +84,7 @@ t_list		*parse(char *path)
 	t_list	*ls;
 
 	check_path(path);
-	cnt = (t_count *)malloc(sizeof(t_count));
-	bzero(cnt, sizeof(t_count));
+	cnt = (t_count *)ft_calloc(1, sizeof(t_count));
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		exit_error("please check your .rt file path\n");

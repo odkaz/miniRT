@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:51:25 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:44:32 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/20 15:44:56 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_rgb		*collision_loop(t_list *ls, t_screen *s)
 
 	if (!(pixels = (t_rgb	*)malloc(sizeof(t_rgb) \
 	* (s->width * s->height + 1))))
-		return (NULL);
+		exit_error("malloc failed\n");
 	res = pixels;
 	s->y = 0;
 	while (s->y < s->height)

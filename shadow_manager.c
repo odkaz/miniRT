@@ -6,28 +6,26 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:53:09 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:53:55 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/20 15:34:58 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-t_rgb		find_brightest(t_list *ls, int min, double d_var, double s_var)
+t_rgb		find_brightest(t_list *ls, int min, double *d_var, double *s_var)
 {
-	double	i_s;
 	double	rgb[3];
 	double	color[3];
 	int		i;
 
-	i_s = 255.0;
 	i = 0;
 	rgb[0] = get_r_byid(ls, min);
 	rgb[1] = get_g_byid(ls, min);
 	rgb[2] = get_b_byid(ls, min);
 	while (i < 3)
 	{
-		color[i] = rgb[i] * d_var;
-		color[i] = ft_max(color[i], i_s * s_var);
+		color[i] = rgb[i] * d_var[i];
+		color[i] = ft_max(color[i], 255 * s_var[i]);
 		color[i] = ft_max(color[i], rgb[i] * \
 		(ls->amb[0].rgb[i] / 255.0) * ls->amb[0].ratio);
 		i++;
@@ -97,25 +95,21 @@ int			test_norm(t_list *ls, int min, t_camera cam)
 t_rgb		shadow_manager(t_list *ls, int min, t_camera cam)
 {
 	int			i;
-	double		d_var;
-	double		s_var;
+	double		*d_var;
+	double		*s_var;
 
 	i = 0;
-	d_var = 0;
-	s_var = 0;
+	d_var = (double *)ft_calloc(3, sizeof(double));
+	s_var = (double *)ft_calloc(3, sizeof(double));
 	while (i < ls->cnt->l)
 	{
 		reflection_set_var(ls, min, cam, ls->l[i]);
 		if (is_shadow(ls, ls->l[i], min) == 0 && test_norm(ls, min, cam))
 		{
-			if (get_cosa_byid(ls, min) > 0)
-				d_var += get_cosa_byid(ls, min) * ls->l[i].rad;
-			if (get_cosg_byid(ls, min) > 0)
-				s_var += get_cosg_byid(ls, min) * ls->l[i].rad;
+			d_var = add_brightness_d(ls, min, ls->l[i], d_var);
+			s_var = add_brightness_s(ls, min, ls->l[i], s_var);
 		}
 		i++;
 	}
-	d_var = ft_min(d_var, 1.0);
-	s_var = ft_min(s_var, 1.0);
 	return (find_brightest(ls, min, d_var, s_var));
 }

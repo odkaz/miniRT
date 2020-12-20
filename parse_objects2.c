@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:52:41 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:14:27 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/19 20:37:34 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void		parse_r(t_list *ls, char *line)
 	line++;
 	scn->width = nextnum(&line, 0, -1);
 	scn->height = nextnum(&line, 0, -1);
+	if (scn->width == 0 || scn->height == 0)
+		exit_error("screen size must be greater than 0\n");
 	i = 0;
 	while (!check_null(sizeof(t_screen), &(ls->scn[i])))
 	{
@@ -63,6 +65,8 @@ void		parse_c(t_list *ls, char *line)
 	else
 		cam->vup = init_vector(0, 0, -1);
 	cam->fov = nextnum(&line, 0, 180);
+	if (cam->fov == 0 || cam->fov == 180)
+		exit_error("please set fov 0 < a < 180\n");
 	i = 0;
 	while (!check_null(sizeof(t_camera), &(ls->cam[i])))
 		i++;

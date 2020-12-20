@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:53:16 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:56:27 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/20 14:16:34 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,10 @@ double		get_t_sp(t_sphere sp, t_vector pos, t_vector ray)
 	qd.d = qd.b * qd.b - 4.0 * qd.a * qd.c;
 	if (qd.d < 0)
 		return (0);
-	return ((-qd.b - sqrt(qd.d)) / (2 * qd.a));
+	if ((-qd.b - sqrt(qd.d)) / (2 * qd.a) > 0.0)
+		return ((-qd.b - sqrt(qd.d)) / (2 * qd.a));
+	else
+		return ((-qd.b + sqrt(qd.d)) / (2 * qd.a));
 }
 
 t_vector	get_tangent(t_camera camera, double t)

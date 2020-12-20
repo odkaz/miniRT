@@ -6,7 +6,7 @@
 /*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:52:25 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/12 15:38:27 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2020/12/20 13:54:11 by kazumanoda       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,6 @@ void		check_capital(t_count *cnt)
 		exit_error("ambient lighting not declared\n");
 	if (cnt->a > 1)
 		exit_error("capital objects can only be declared once\n");
+	if (cnt->c < 1)
+		exit_error("please set the camera\n");
 }
