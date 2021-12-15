@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sphere.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
+/*   By: knoda <knoda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:53:16 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/20 14:16:34 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2021/12/15 14:12:03 by knoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ double		get_t_sp(t_sphere sp, t_vector pos, t_vector ray)
 	qd.b = 2 * inner(s, d);
 	qd.c = norm(s) * norm(s) - r * r;
 	qd.d = qd.b * qd.b - 4.0 * qd.a * qd.c;
-	if (qd.d < 0)
-		return (0);
+	if (qd.d < 0.0)
+		return (0.0);
 	if ((-qd.b - sqrt(qd.d)) / (2 * qd.a) > 0.0)
 		return ((-qd.b - sqrt(qd.d)) / (2 * qd.a));
 	else

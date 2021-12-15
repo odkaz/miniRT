@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   triangle.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kazumanoda <kazumanoda@student.42.fr>      +#+  +:+       +#+        */
+/*   By: knoda <knoda@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/12 12:53:24 by kazumanoda        #+#    #+#             */
-/*   Updated: 2020/12/13 10:48:21 by kazumanoda       ###   ########.fr       */
+/*   Updated: 2021/12/15 14:10:02 by knoda            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ double	get_t_plane(t_vector p, t_vector normal, t_vector pos, t_vector ray)
 
 	numerator = inner(vector_sub(pos, p), normal);
 	denominator = inner(ray, normal);
-	if (denominator != 0)
+	if (denominator != 0.0)
 		t = -numerator / denominator;
 	else
 		t = 0.0;
@@ -36,17 +36,17 @@ int		p_test_tr(t_triangle tr, t_vector p)
 	edge[0] = vector_sub(tr.p[1], tr.p[0]);
 	vp[0] = vector_sub(p, tr.p[0]);
 	c = cross(edge[0], vp[0]);
-	if (inner(tr.var.normal, c) < 0)
+	if (inner(tr.var.normal, c) < 0.0)
 		return (0);
 	edge[1] = vector_sub(tr.p[2], tr.p[1]);
 	vp[1] = vector_sub(p, tr.p[1]);
 	c = cross(edge[1], vp[1]);
-	if (inner(tr.var.normal, c) < 0)
+	if (inner(tr.var.normal, c) < 0.0)
 		return (0);
 	edge[2] = vector_sub(tr.p[0], tr.p[2]);
 	vp[2] = vector_sub(p, tr.p[2]);
 	c = cross(edge[2], vp[2]);
-	if (inner(tr.var.normal, c) < 0)
+	if (inner(tr.var.normal, c) < 0.0)
 		return (0);
 	return (1);
 }
