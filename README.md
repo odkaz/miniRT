@@ -1,10 +1,8 @@
 # miniRT
-このソフトはどんなもので、何ができるのかを書く
-合わせて、簡単なデモ（使用例）などスクリーンショットやGIFアニメで表示
+![pikachu](https://user-images.githubusercontent.com/47331394/146163268-bba1d537-9dc3-4c75-89ea-b32aec9215eb.gif)
 
-## Dependency
-使用言語とバージョン、必要なライブラリとそのバージョンを書く
-Pythonならrequirements.txtを用意するのも良い
+## Discription
+This program will render simple shapes using the ray tracing techniques.
 
 ## Installation
 ```https://github.com/odkaz/miniRT.git```
@@ -26,3 +24,6 @@ e.g. ```./miniRT test.rt --save```
 
 ## References
 参考にした情報源（サイト・論文）などの情報、リンク
+
+
+
