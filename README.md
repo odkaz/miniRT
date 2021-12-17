@@ -22,5 +22,3 @@ Now enjoy the beautiful images rendered by ray tracing!
 3.```tab```: Swich the camera to see from different angles.
 
 4.```esc```: Exit the program, or you can click on the cross button to finish the program.
-
-## Sample images
