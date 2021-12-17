@@ -6,7 +6,7 @@
 #    By: knoda <knoda@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/13 15:01:12 by kazumanoda        #+#    #+#              #
-#    Updated: 2021/12/16 15:28:00 by knoda            ###   ########.fr        #
+#    Updated: 2021/12/17 12:39:53 by knoda            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,7 @@ LIBS = -lXext -lX11
 RM = rm -f
 
 else
-LIBS:= get_next_line/libget_next_line.a libx_mac/libmlx.dylib
-# LIBS := ar -rc
-MINI := libminirt.a
-SUBDIRS = ./get_next_line  ./libx_mac
-AOUT = miniRT miniRT.dSYM
+LIBS:= get_next_line/libget_next_line.a libmlx.dylib
 
 endif
 
@@ -73,7 +69,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) -C ./get_next_line
-	$(MAKE) -C ./libx_mac
+	# $(MAKE) -C ./libx_mac
 	$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) $(LIBS) -o $(NAME)
 
 .c.o:
@@ -82,40 +78,14 @@ $(NAME): $(OBJS)
 clean:
 	rm -f $(OBJS)
 	$(MAKE) clean -C ./get_next_line
-	$(MAKE) clean -C ./libx_mac
+	# $(MAKE) clean -C ./libx_mac
 
 fclean: clean
 	rm -f $(NAME) img_*
 	$(MAKE) fclean -C ./get_next_line
-	$(MAKE) fclean -C ./libx_mac
+	# $(MAKE) fclean -C ./libx_mac
 
 re: fclean all
-# all: $(SUBDIRS) $(NAME)
-
-# $(NAME): $(OBJS)
-# 	cp get_next_line/libget_next_line.a $(MINI)
-# 	$(LIBS) $(MINI) $^
-# 	mv libx_mac/libmlx.dylib libmlx.dylib
-# 	$(CC) $(CFLAGS) $(INCLUDE) libmlx.dylib $(MINI) -o $(NAME)
-
-# .c.o:
-# 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
-
-# clean: $(SUBDIRS)
-# 	rm -f $(OBJS)
-# 	rm -f $(MINI)
-
-# fclean: $(SUBDIRS) clean
-# 	rm -f $(NAME)
-# 	rm libmlx.dylib libget_next_line.a img_*
-# 	rm -rf $(AOUT)
-
-# re: $(SUBDIRS) fclean all
-
-# $(SUBDIRS) : FORCE
-# 	make -C $@ $(MAKECMDGOALS)
-
-# FORCE:
 
 .PHONY: all clean fclean re
 endif
